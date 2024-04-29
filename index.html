@@ -5,41 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>calculadora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="calculadora">
         <h1>calculadora</h1>
         <p id="resultado"></p>
         <table>
-            <tr class="botao">
-                <td><button>+</button></td>
-                <td><button>-</button></td>
-                <td><button>x</button></td>
-                <td><button>/</button></td>
+            <tr>
+                <td><button  class="botao"onclick="clean('')">C</button></td>
+                <td><button  class="botao" onclick="beck('')"><</button></td>
+                <td><button  class="botao" onclick="insert('/')">/</button></td>
+                <td><button  class="botao" onclick="insert('*')">X</button></td>
             </tr>
-            <tr class="botao">
-                <td><button>0</button></td>
-                <td><button>9</button></td>
-                <td><button>8</button></td>
-                <td><button>7</button></td>
+            <tr>
+                <td><button class="botao" onclick="insert('7')">7</button></td>
+                <td><button class="botao" onclick="insert('8')">8</button></td>
+                <td><button class="botao" onclick="insert('9')">9</button></td>
+                <td><button class="botao" onclick="insert('-')">-</button></button></td>
             </tr>
-            <tr class="botao">
-                <td><button>6</button></td>
-                <td><button>5</button></td>
-                <td><button>4</button></td>
-                <td><button>3</button></td>
+            <tr>
+                <td><button class="botao" onclick="insert('4')">4</button></td>
+                <td><button class="botao" onclick="insert('5')">5</button></td>
+                <td><button class="botao" onclick="insert('6')">6</button></td>
+                <td><button class="botao" onclick="insert('+')">+</button></button></td>
             </tr>
-            <td class="botao">
-                <button>2</button></td>
-                <td><button>1</button></td>
-                <td><button>C</button></td>
-                <td><button>=</button></td>
+         <tr>
+                <td><button class="botao" onclick="insert('1')">1</button></td>
+                <td><button class="botao"onclick="insert('2')" >2</button></td>
+                <td><button class="botao" onclick="insert('3')">3</button></td>
+                <td rowspan="2"><button class="botao" style="height: 106px;" onclick="calcular('')">=</button></button></td>
+         </tr>
+            <tr>
+        <td colspan="2"><button class="botao" style="width: 106px;" onclick="insert('0')">0</button></td>
+        <td><button class="botao" onclick="insert('.')">.</button></td>
             </tr>
-                
         </table>
         
     </div>
-    
+    <script>
+    function  insert(num){
+       var numero = document.getElementById('resultado').innerHTML;
+       document.getElementById('resultado').innerHTML = numero + num;
+        }
+        function clean(){
+            document.getElementById('resultado').innerHTML = "";
+        }
+        function beck(){
+           var resultado = document.getElementById('resultado').innerHTML;
+           document.getElementById('resultado').innerHTML = resultado.substring(0,resultado.length-1);
+        }
+        function calcular(){
+        var resultado = document.getElementById('resultado').innerHTML;
+        if(resultado){
+            document.getElementById('resultado').innerHTML = eval(resultado);
+        }
+        else{
+            document.getElementById('resultado').innerHTML ='Insira um calculo';
+        }
+        }
+        </script>
 </body>
 
 </html>
